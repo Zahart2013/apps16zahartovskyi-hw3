@@ -34,8 +34,8 @@ class Student {
     @Override
     public boolean equals(Object obj) {
         if (obj instanceof Student) {
-            return this.getSurname() == ((Student) obj).getSurname()
-                    && this.getName() == ((Student) obj).getName()
+            return this.getSurname().equals(((Student) obj).getSurname())
+                    && this.getName().equals(((Student) obj).getName())
                     && this.getYear() == ((Student) obj).getYear()
                     && this.getGPA() == ((Student) obj).getGPA();
         }
