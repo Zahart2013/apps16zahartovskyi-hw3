@@ -44,7 +44,15 @@ class Student {
 
     @Override
     public String toString() {
-        return "Student{name=" + name + ", surname=" + surname + ", " + "GPA=" + GPA + ", year=" + year + '}';
+        return "Student{name=" + name
+                + ", surname=" + surname
+                + ", " + "GPA=" + GPA
+                + ", year=" + year + '}';
+    }
+
+    @Override
+    public int hashCode(){
+        return (int) GPA * 1000 + year + name.hashCode() * 10000;
     }
 
 }

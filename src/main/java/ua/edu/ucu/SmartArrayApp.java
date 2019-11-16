@@ -70,14 +70,16 @@ public class SmartArrayApp {
         MyComparator cmp = new MyComparator() {
             @Override
             public int compare(Object o1, Object o2) {
-                return ((Student) o1).getSurname().compareTo(((Student) o2).getSurname());
+                return ((Student) o1).getSurname()
+                        .compareTo(((Student) o2).getSurname());
             }
         };
 
         MyFunction func = new MyFunction() {
             @Override
             public Object apply(Object t) {
-                return ((Student) t).getSurname() + " " + ((Student) t).getName();
+                return ((Student) t).getSurname()
+                        + " " + ((Student) t).getName();
             }
         };
 
@@ -85,7 +87,6 @@ public class SmartArrayApp {
         studentSmartArray = new DistinctDecorator(studentSmartArray);
         studentSmartArray = new FilterDecorator(studentSmartArray, prYear);
         studentSmartArray = new FilterDecorator(studentSmartArray, prGPA);
-        studentSmartArray.toArray();
         studentSmartArray = new SortDecorator(studentSmartArray, cmp);
         studentSmartArray = new MapDecorator(studentSmartArray, func);
         // Hint: to convert Object[] to String[] - use the following code
