@@ -5,7 +5,7 @@ import ua.edu.ucu.functions.MyPredicate;
 import java.util.ArrayList;
 
 // Tests every element and removes it if it doesn't satisfy MyPredicate
-public class FilterDecorator extends SmartArrayDecorator{
+public class FilterDecorator extends SmartArrayDecorator {
 
     private MyPredicate func;
 
@@ -17,8 +17,8 @@ public class FilterDecorator extends SmartArrayDecorator{
     @Override
     public Object[] toArray() {
         ArrayList<Object> result = new ArrayList<>();
-        for(int i = 0; i < smartArray.size(); i++){
-            if(func.test(smartArray.toArray()[i])){
+        for (int i = 0; i < smartArray.size(); i++) {
+            if (func.test(smartArray.toArray()[i])) {
                 result.add(smartArray.toArray()[i]);
             }
         }
@@ -26,7 +26,7 @@ public class FilterDecorator extends SmartArrayDecorator{
     }
 
     @Override
-    public String operationDescription(){
+    public String operationDescription() {
         if (smartArray.operationDescription().equals("Nothing")) {
             return "Filtering";
         } else {
@@ -35,10 +35,10 @@ public class FilterDecorator extends SmartArrayDecorator{
     }
 
     @Override
-    public int size(){
+    public int size() {
         int result = 0;
-        for(int i = 0; i < smartArray.size(); i++){
-            if(func.test(smartArray.toArray()[i])){
+        for (int i = 0; i < smartArray.size(); i++) {
+            if (func.test(smartArray.toArray()[i])) {
                 result++;
             }
         }
