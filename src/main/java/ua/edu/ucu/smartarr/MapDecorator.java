@@ -3,6 +3,7 @@ package ua.edu.ucu.smartarr;
 import ua.edu.ucu.functions.MyFunction;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 
 // Map every element to another object using MyFunction
 public class MapDecorator extends SmartArrayDecorator {
@@ -15,11 +16,7 @@ public class MapDecorator extends SmartArrayDecorator {
 
     @Override
     public Object[] toArray() {
-        ArrayList<Object> result = new ArrayList<>();
-        for (int i = 0; i < smartArray.size(); i++) {
-            result.add(func.apply(smartArray.toArray()[i]));
-        }
-        return result.toArray();
+        return Arrays.stream(smartArray.toArray()).map(func::apply).toArray();
     }
 
     @Override
@@ -33,6 +30,6 @@ public class MapDecorator extends SmartArrayDecorator {
 
     @Override
     public int size() {
-        return smartArray.size();
+        return this.toArray().length;
     }
 }

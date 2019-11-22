@@ -3,6 +3,7 @@ package ua.edu.ucu.smartarr;
 import ua.edu.ucu.functions.MyPredicate;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 
 // Tests every element and removes it if it doesn't satisfy MyPredicate
 public class FilterDecorator extends SmartArrayDecorator {
@@ -16,13 +17,7 @@ public class FilterDecorator extends SmartArrayDecorator {
 
     @Override
     public Object[] toArray() {
-        ArrayList<Object> result = new ArrayList<>();
-        for (int i = 0; i < smartArray.size(); i++) {
-            if (func.test(smartArray.toArray()[i])) {
-                result.add(smartArray.toArray()[i]);
-            }
-        }
-        return result.toArray();
+        return Arrays.stream(smartArray.toArray()).filter(func::test).toArray();
     }
 
     @Override
@@ -36,12 +31,6 @@ public class FilterDecorator extends SmartArrayDecorator {
 
     @Override
     public int size() {
-        int result = 0;
-        for (int i = 0; i < smartArray.size(); i++) {
-            if (func.test(smartArray.toArray()[i])) {
-                result++;
-            }
-        }
-        return result;
+        return this.toArray().length;
     }
 }
